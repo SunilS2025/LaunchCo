@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Launch Copilot | Pharmaceutical Launch Excellence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Primary Color Palette */
+            --sky-blue: #0EA5E9;
+            --sky-blue-light: #7DD3FC;
+            --sky-pale: #E0F2FE;
+            --navy: #1E3A8A;
+            --navy-dark: #1E293B;
+            --gold: #F59E0B;
+            --gold-light: #FCD34D;
+            --white: #FFFFFF;
+            
+            /* Semantic Colors */
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --background: #F8FAFC;
+            --border: #E2E8F0;
+            --success: #10B981;
+            --error: #EF4444;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--sky-pale);
+        }
+
+        nav {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--sky-blue);
+        }
+
+        nav a.active {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 50%, var(--sky-pale) 100%);
+            padding: 6rem 2.5rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(30, 58, 138, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1320px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: var(--white);
+            color: var(--navy);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--gold);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 1.1rem 2.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4.5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.6rem 1.3rem;
+            background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 100%);
+            color: var(--navy);
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--sky-blue);
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+
+        h2 .gold-highlight {
+            color: var(--gold);
+        }
+
+        .section-description {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Challenge Section */
+        .challenge-section {
+            background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%);
+            position: relative;
+        }
+
+        .challenge-intro {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--text-primary);
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--white);
+            border-radius: 16px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .challenge-card {
+            background: var(--white);
+            padding: 2.8rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--sky-blue) 0%, var(--navy) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .challenge-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .challenge-card:hover {
+            border-color: var(--sky-blue);
+            box-shadow: 0 12px 40px rgba(14, 165, 233, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .challenge-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.8rem;
+            border: 2px solid var(--sky-blue);
+        }
+
+        .challenge-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--navy-dark);
+            line-height: 1.3;
+        }
+
+        .challenge-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Statistics Bar */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            padding: 4rem 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .stats-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--white);
+            padding: 1.5rem;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--sky-blue-light) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--sky-blue-light);
+            font-weight: 500;
+        }
+
+        /* Stakeholder Section */
+        .stakeholder-section {
+            background: var(--white);
+        }
+
+        .stakeholder-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--sky-blue);
+            color: var(--sky-blue);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            border-color: var(--sky-blue);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        .stakeholder-content {
+            display: none;
+        }
+
+        .stakeholder-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .journey-container {
+            background: var(--white);
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .journey-header {
+            background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 100%);
+            padding: 3rem;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .journey-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            color: var(--navy-dark);
+        }
+
+        .journey-header p {
+            color: var(--navy);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .journey-body {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+        }
+
+        .from-state, .to-state {
+            padding: 3.5rem 3rem;
+        }
+
+        .from-state {
+            background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+        }
+
+        .to-state {
+            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+        }
+
+        .state-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid;
+        }
+
+        .from-state .state-label {
+            color: var(--error);
+            border-color: var(--error);
+        }
+
+        .to-state .state-label {
+            color: var(--success);
+            border-color: var(--success);
+        }
+
+        .state-label::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .from-state .state-label::before {
+            background: var(--error);
+        }
+
+        .to-state .state-label::before {
+            background: var(--success);
+        }
+
+        .state-list {
+            list-style: none;
+        }
+
+        .state-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .from-state .state-list li::before {
+            content: '✕';
+            position: absolute;
+            left: 0;
+            color: var(--error);
+            font-weight: 800;
+            font-size: 1.4rem;
+        }
+
+        .to-state .state-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .arrow-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, var(--sky-pale) 0%, var(--gold-light) 100%);
+            width: 100px;
+            position: relative;
+        }
+
+        .arrow-divider svg {
+            width: 50px;
+            height: 50px;
+            color: var(--navy);
+        }
+
+        /* Outcomes Section */
+        .outcomes-section {
+            background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .outcome-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+
+        .outcome-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        .outcome-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .outcome-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .outcome-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+        }
+
+        .outcome-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Workstreams Section */
+        .workstreams-section {
+            background: var(--white);
+        }
+
+        .workstreams-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .workstream-type {
+            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 3px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workstream-type::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--sky-blue) 0%, var(--navy) 100%);
+        }
+
+        .workstream-type:last-child::before {
+            background: linear-gradient(90deg, var(--gold) 0%, var(--navy) 100%);
+        }
+
+        .workstream-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .workstream-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .workstream-type:last-child .workstream-icon {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--navy) 100%);
+        }
+
+        .workstream-header h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+        }
+
+        .workstream-list {
+            list-style: none;
+        }
+
+        .workstream-list li {
+            padding: 1.3rem;
+            background: var(--white);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--sky-blue);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+
+        .workstream-list li:hover {
+            border-left-width: 6px;
+            transform: translateX(5px);
+            background: var(--sky-pale);
+        }
+
+        .workstream-list li strong {
+            color: var(--navy-dark);
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            padding: 6rem 2.5rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 3.2rem;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            color: var(--sky-blue-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-section .btn-primary {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .cta-section .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--sky-blue-light);
+        }
+
+        .cta-section .btn-secondary:hover {
+            background: var(--sky-blue-light);
+            color: var(--navy);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-dark);
+            color: var(--white);
+            padding: 4rem 2.5rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .footer-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--gold) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .footer-description {
+            color: #94A3B8;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--sky-blue-light);
+        }
+
+        .footer-bottom {
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .challenges-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.3rem;
+            }
+
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-body {
+                grid-template-columns: 1fr;
+            }
+
+            .arrow-divider {
+                width: 100%;
+                height: 80px;
+                transform: rotate(90deg);
+            }
+
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workstreams-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stakeholder-tabs {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">LC</div>
+                <span>Launch Copilot</span>
+            </div>
+            <ul>
+                <li><a href="#" class="active">Why Launch Copilot</a></li>
+                <li><a href="page2-how-it-works.html">How It Works</a></li>
+                <li><a href="page3-request-demo.html">Request Demo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Pharmaceutical Launch Excellence</span>
+            <h1>Transform <span class="highlight">Complex Pharmaceutical Launches</span> into Predictable Success</h1>
+            <p class="hero-subtitle">Launch Copilot is the AI-powered intelligence platform that brings structure, foresight, and decision support to every stage of your pharmaceutical launch—helping cross-functional teams navigate complexity and deliver measurable outcomes.</p>
+            <div class="hero-cta">
+                <a href="page2-how-it-works.html" class="btn btn-primary">
+                    See How It Works
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <a href="page3-request-demo.html" class="btn btn-secondary">Request a Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Challenge Section -->
+    <section class="challenge-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">The Launch Challenge</span>
+                <h2>Why Pharmaceutical Launches <span class="gold-highlight">Still Struggle</span></h2>
+                <p class="section-description">Despite rigorous clinical development and robust scientific evidence, pharmaceutical launches frequently miss their potential—not because of weak science, but because of organizational complexity that overwhelms even the most experienced teams.</p>
+            </div>
+
+            <div class="challenge-intro">
+                <strong>The Reality:</strong> Cross-functional launch teams coordinate 100+ interdependent deliverables across medical affairs, commercial, regulatory, market access, and operations—spanning multiple markets, therapeutic indications, and stakeholder groups. The compounding complexity creates friction at every turn, delays critical decisions, and obscures true readiness until it's too late.
+            </div>
+
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">📊</div>
+                    <h3>Fragmented Information Systems</h3>
+                    <p>Launch materials scattered across SharePoint sites, email chains, and departmental drives. No single source of truth for readiness status, regulatory approvals, or cross-market dependencies. Teams waste 30% of their time simply finding the information they need to do their work.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">⚖️</div>
+                    <h3>Inconsistent Quality Standards</h3>
+                    <p>What constitutes "launch ready" varies wildly across franchises, markets, and therapeutic areas. Medical education materials lack consistency. Payer value propositions aren't benchmarked. HCP engagement strategies reinvent the wheel with each launch, despite similar precedents.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">🔥</div>
+                    <h3>Reactive Risk Detection</h3>
+                    <p>Critical gaps surface days or weeks before pivotal regulatory milestones. Leadership discovers readiness issues when recovery options are limited. Risk identification depends on individual vigilance rather than systematic early-warning mechanisms.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">⏱️</div>
+                    <h3>Unsustainable Operational Overhead</h3>
+                    <p>Brand teams drowning in program management tasks—status updates, alignment meetings, manual report compilation. Limited ability to leverage templates, frameworks, or learnings from previous launches. Every launch feels like starting from scratch.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">🔄</div>
+                    <h3>Cross-Functional Misalignment</h3>
+                    <p>Medical affairs, commercial, and market access operate with different success definitions and competing priorities. Executives receive conflicting messages from functional leaders. Strategic intent gets lost in translation to tactical execution.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">📚</div>
+                    <h3>Learning Loss</h3>
+                    <p>Post-launch reviews capture valuable insights, but they sit in documents that rarely inform future launches. Institutional knowledge walks out the door with people. Launch Centers of Excellence struggle to systematize best practices at scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Bar -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">73%</div>
+                <div class="stat-label">of pharma launches miss revenue targets in Year 1</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">interdependent deliverables per launch</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8-12</div>
+                <div class="stat-label">months of pre-launch planning compressed into chaos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">30%</div>
+                <div class="stat-label">of team time wasted on status chasing and alignment</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stakeholder Journey Section -->
+    <section class="stakeholder-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Role-Specific Solutions</span>
+                <h2>Built for <span class="gold-highlight">Every Stakeholder</span> in the Launch Ecosystem</h2>
+                <p class="section-description">Launch Copilot understands that different roles face different challenges. We deliver targeted transformations based on what matters most to you—whether you're executing deliverables, orchestrating programs, or making strategic decisions.</p>
+            </div>
+
+            <div class="stakeholder-tabs">
+                <button class="tab-btn active" onclick="showTab(0)">Launch Team Members</button>
+                <button class="tab-btn" onclick="showTab(1)">Launch Leads & PMO</button>
+                <button class="tab-btn" onclick="showTab(2)">Executive Leadership</button>
+            </div>
+
+            <div class="stakeholder-content active" id="tab-0">
+                <div class="journey-container">
+                    <div class="journey-header">
+                        <h3>Launch Team Members</h3>
+                        <p>Medical Affairs • Commercial • Market Access • Regulatory Affairs • Operations</p>
+                    </div>
+                    <div class="journey-body">
+                        <div class="from-state">
+                            <div class="state-label">Current State: Challenges</div>
+                            <ul class="state-list">
+                                <li>Unclear expectations on deliverable quality and completeness standards</li>
+                                <li>Creating materials from scratch without gold-standard examples or guidance</li>
+                                <li>Duplicating similar work across markets, indications, or patient segments</li>
+                                <li>Difficulty connecting day-to-day tactical work to strategic launch objectives</li>
+                                <li>Inconsistent, delayed feedback cycles from reviewers and stakeholders</li>
+                                <li>Manual adaptation of generic templates without therapeutic area context</li>
+                                <li>Limited visibility into dependencies and handoffs with other functions</li>
+                            </ul>
+                        </div>
+                        <div class="arrow-divider">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </div>
+                        <div class="to-state">
+                            <div class="state-label">Future State: With Launch Copilot</div>
+                            <ul class="state-list">
+                                <li>Gold-standard templates with embedded coaching from comparable pharma launches</li>
+                                <li>AI-generated first drafts pre-populated with clinical, regulatory, and market data</li>
+                                <li>Instant material adaptation across markets, languages, and stakeholder types</li>
+                                <li>Clear line of sight from your work to launch KPIs and success criteria</li>
+                                <li>Real-time quality checks against regulatory requirements and brand standards</li>
+                                <li>Therapeutic area-specific guidance and competitive intelligence built in</li>
+                                <li>Transparent ownership, dependency mapping, and milestone visibility</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stakeholder-content" id="tab-1">
+                <div class="journey-container">
+                    <div class="journey-header">
+                        <h3>Launch Leads & Program Management</h3>
+                        <p>Launch Excellence • PMO • Launch Operations • Program Directors</p>
+                    </div>
+                    <div class="journey-body">
+                        <div class="from-state">
+                            <div class="state-label">Current State: Challenges</div>
+                            <ul class="state-list">
+                                <li>Manually tracking 100+ interdependent deliverables across multiple workstreams</li>
+                                <li>Constant status chasing via emails, meetings, and one-off check-ins</li>
+                                <li>Reactive firefighting when gaps emerge instead of proactive risk management</li>
+                                <li>Cross-functional teams misaligned on priorities, timelines, and success metrics</li>
+                                <li>Unclear ground truth on readiness vs. optimistic self-assessments</li>
+                                <li>Manual compilation of leadership updates consuming hours each week</li>
+                                <li>Dependency conflicts discovered late when recovery is costly or impossible</li>
+                            </ul>
+                        </div>
+                        <div class="arrow-divider">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </div>
+                        <div class="to-state">
+                            <div class="state-label">Future State: With Launch Copilot</div>
+                            <ul class="state-list">
+                                <li>Automated dependency mapping showing critical path and integration points</li>
+                                <li>Real-time readiness dashboard eliminating 90% of status update meetings</li>
+                                <li>Early-warning risk indicators surfacing issues 3-4 weeks before milestones</li>
+                                <li>Unified alignment framework ensuring all functions work to same success criteria</li>
+                                <li>Objective readiness scoring based on deliverable completeness and quality</li>
+                                <li>One-click executive briefings with drill-down capability to supporting detail</li>
+                                <li>Proactive scenario planning with mitigation playbooks pre-built for common risks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stakeholder-content" id="tab-2">
+                <div class="journey-container">
+                    <div class="journey-header">
+                        <h3>Executive Leadership</h3>
+                        <p>Brand Leaders • Franchise Heads • Commercial/Medical VPs • C-Suite</p>
+                    </div>
+                    <div class="journey-body">
+                        <div class="from-state">
+                            <div class="state-label">Current State: Challenges</div>
+                            <ul class="state-list">
+                                <li>Low visibility into true launch readiness and underlying risk exposure</li>
+                                <li>Conflicting status reports from different functional leaders creating confusion</li>
+                                <li>Drowning in operational detail when you need strategic signal</li>
+                                <li>Inability to quickly pressure-test launch assumptions or model scenarios</li>
+                                <li>No unified portfolio view across multiple concurrent launch activities</li>
+                                <li>Limited benchmarking against internal gold standards or external comparables</li>
+                                <li>Difficulty connecting launch investment decisions to outcome probabilities</li>
+                            </ul>
+                        </div>
+                        <div class="arrow-divider">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </div>
+                        <div class="to-state">
+                            <div class="state-label">Future State: With Launch Copilot</div>
+                            <ul class="state-list">
+                                <li>Executive storylines synthesizing readiness, risks, and recovery options</li>
+                                <li>Objective readiness scoring benchmarked against comparable past launches</li>
+                                <li>15-second answers to specific questions without burdening your teams</li>
+                                <li>Instant scenario modeling capabilities for "what-if" strategic exploration</li>
+                                <li>Portfolio countdown dashboards across all active and planned launches</li>
+                                <li>Consistent metrics and evaluation criteria across franchises and markets</li>
+                                <li>Clear investment-to-outcome traceability informing resource allocation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section class="outcomes-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Measurable Impact</span>
+                <h2>Outcomes You Can <span class="gold-highlight">Track and Validate</span></h2>
+                <p class="section-description">Launch Copilot delivers quantifiable improvements across the metrics that matter most to pharmaceutical launch success—from operational efficiency to strategic decision quality.</p>
+            </div>
+
+            <div class="outcomes-grid">
+                <div class="outcome-card">
+                    <div class="outcome-header">
+                        <div class="outcome-icon">⚡</div>
+                        <h3>40-50% Faster Time-to-Quality</h3>
+                    </div>
+                    <p>Accelerate deliverable development for critical materials including medical education content, HCP engagement plans, payer value stories, and leadership briefings. Teams spend less time on mechanics and more time on strategic thinking and stakeholder engagement.</p>
+                </div>
+
+                <div class="outcome-card">
+                    <div class="outcome-header">
+                        <div class="outcome-icon">🎯</div>
+                        <h3>Complete Transparency & Traceability</h3>
+                    </div>
+                    <p>Establish clear line of sight from executive strategy through functional workstreams to individual task owners and milestone deadlines. No more "black box" status—everyone understands how their work contributes to launch success.</p>
+                </div>
+
+                <div class="outcome-card">
+                    <div class="outcome-header">
+                        <div class="outcome-icon">🛡️</div>
+                        <h3>3-4 Week Early Risk Detection</h3>
+                    </div>
+                    <p>Identify critical gaps and dependency conflicts weeks before they threaten key milestones. Systematic gap analysis against therapeutic area success criteria and regulatory requirements replaces reactive firefighting with proactive risk mitigation.</p>
+                </div>
+
+                <div class="outcome-card">
+                    <div class="outcome-header">
+                        <div class="outcome-icon">📚</div>
+                        <h3>Compounding Institutional Knowledge</h3>
+                    </div>
+                    <p>Build a learning loop that strengthens your Launch Center of Excellence with each product. Best practices, templates, competitive insights, and post-launch learnings become systematically reusable—not trapped in documents or people's heads.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workstreams Section -->
+    <section class="workstreams-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Launch Architecture</span>
+                <h2>Orchestrating <span class="gold-highlight">Functional Excellence</span> and Strategic Oversight</h2>
+                <p class="section-description">Launch Copilot brings structure to both the functional workstreams that create launch deliverables and the oversight mechanisms that ensure cross-functional alignment, quality standards, and strategic coherence.</p>
+            </div>
+
+            <div class="workstreams-container">
+                <div class="workstream-type">
+                    <div class="workstream-header">
+                        <div class="workstream-icon">🔧</div>
+                        <h3>Functional Workstreams</h3>
+                    </div>
+                    <ul class="workstream-list">
+                        <li><strong>Medical Affairs:</strong> Medical education strategy, scientific communications, publications planning, MSL training, KOL engagement, advisory boards, congress strategy</li>
+                        <li><strong>Commercial:</strong> Brand positioning, marketing campaigns, omnichannel strategy, sales force training and enablement, patient services design, DTC planning</li>
+                        <li><strong>Market Access:</strong> Payer engagement strategy, HEOR evidence generation, value dossier development, reimbursement positioning, pricing strategy, pull-through programs</li>
+                        <li><strong>Regulatory & Compliance:</strong> Regulatory submissions, labeling negotiations, promotional material review, adverse event management, post-marketing commitments</li>
+                        <li><strong>Operations & Supply:</strong> Supply chain readiness, distribution strategy, demand forecasting, patient support program infrastructure, specialty pharmacy relationships</li>
+                    </ul>
+                </div>
+
+                <div class="workstream-type">
+                    <div class="workstream-header">
+                        <div class="workstream-icon">🎯</div>
+                        <h3>Oversight & Alignment Workstreams</h3>
+                    </div>
+                    <ul class="workstream-list">
+                        <li><strong>Launch Governance:</strong> Steering committee operations, decision-making frameworks, escalation protocols, cross-functional prioritization, resource allocation</li>
+                        <li><strong>Cross-Functional Integration:</strong> Dependency identification and management, handoff protocols between teams, integration testing of connected deliverables, conflict resolution</li>
+                        <li><strong>Quality Assurance:</strong> Standards definition and enforcement, deliverable reviews against benchmarks, compliance verification, brand consistency checks</li>
+                        <li><strong>Risk & Issue Management:</strong> Systematic risk identification, impact assessment, mitigation planning, recovery scenario development, lessons learned capture</li>
+                        <li><strong>Performance & Readiness:</strong> KPI definition and tracking, readiness scoring, stakeholder reporting, launch rehearsals, go/no-go decision support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Pharmaceutical Launches?</h2>
+            <p>See how Launch Copilot brings predictability, transparency, and strategic intelligence to complex product launches</p>
+            <div class="cta-buttons">
+                <a href="page2-how-it-works.html" class="btn btn-primary">
+                    Explore How It Works
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <a href="page3-request-demo.html" class="btn btn-secondary">Request a Personalized Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">LC</div>
+                    <span>Launch Copilot</span>
+                </div>
+                <p class="footer-description">AI-powered pharmaceutical launch excellence platform. A Clariem product designed to transform how biopharma organizations orchestrate complex product launches across medical, commercial, regulatory, and market access functions.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Why Launch Copilot</a></li>
+                    <li><a href="page2-how-it-works.html">How It Works</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Webinars</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Clariem</a></li>
+                    <li><a href="page3-request-demo.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Clariem Inc. All rights reserved. | Launch Copilot is a registered trademark.
+        </div>
+    </footer>
+
+    <script>
+        function showTab(index) {
+            document.querySelectorAll('.stakeholder-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById('tab-' + index).classList.add('active');
+            document.querySelectorAll('.tab-btn')[index].classList.add('active');
+        }
+    </script>
+</body>
+</html>
