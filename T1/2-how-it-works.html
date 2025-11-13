@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Launch Copilot Works | Four Intelligent Modes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        :root {
+            --sky-blue: #0EA5E9; --sky-blue-light: #7DD3FC; --sky-pale: #E0F2FE;
+            --navy: #1E3A8A; --navy-dark: #1E293B;
+            --gold: #F59E0B; --gold-light: #FCD34D;
+            --white: #FFFFFF; --text-primary: #1E293B; --text-secondary: #64748B;
+            --background: #F8FAFC; --border: #E2E8F0;
+        }
+        body {font-family: 'Inter', sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
+        
+        /* Header */
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--sky-pale);}
+        nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
+        .logo {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 0.7rem; text-decoration: none;}
+        .logo img {height: 45px; width: auto;}
+        .nav-container {display: flex; align-items: center; gap: 2.5rem;}
+        nav ul {list-style: none; display: flex; gap: 2.5rem;}
+        nav > ul > li {position: relative;}
+        nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; font-size: 0.95rem;}
+        nav a:hover {color: var(--sky-blue);}
+        nav a.active {color: var(--navy); font-weight: 600;}
+        nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);}
+        
+        /* Dropdown Menu */
+        .dropdown-menu {display: none; position: absolute; top: 100%; left: 0; background: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,0.12); border-radius: 8px; padding: 0.5rem 0; min-width: 220px; margin-top: 1.5rem; border: 1px solid var(--border);}
+        nav li:hover .dropdown-menu {display: block;}
+        .dropdown-menu li {padding: 0;}
+        .dropdown-menu a {display: block; padding: 0.8rem 1.5rem; font-size: 0.9rem; color: var(--text-secondary); border-left: 3px solid transparent; transition: all 0.2s;}
+        .dropdown-menu a:hover {background: var(--sky-pale); border-left-color: var(--sky-blue); color: var(--navy);}
+        
+        /* Hero */
+        .hero {background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 50%, var(--sky-pale) 100%); padding: 6rem 2.5rem 5rem; position: relative;}
+        .hero-content {max-width: 1320px; margin: 0 auto;}
+        .hero-label {display: inline-block; padding: 0.6rem 1.2rem; background: var(--white); color: var(--navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--gold);}
+        .hero h1 {font-size: 4rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.1;}
+        .hero h1 .highlight {background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+        .hero-subtitle {font-size: 1.6rem; color: var(--text-secondary); max-width: 900px;}
+        
+        /* Containers and Sections */
+        .container {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem;}
+        section {padding: 6rem 0;}
+        .section-header {text-align: center; margin-bottom: 4.5rem;}
+        .section-label {display: inline-block; padding: 0.6rem 1.3rem; background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 100%); color: var(--navy); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; border: 1px solid var(--sky-blue);}
+        h2 {font-size: 3rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1.2rem; letter-spacing: -0.025em; line-height: 1.2;}
+        h2 .gold-highlight {color: var(--gold);}
+        .section-description {font-size: 1.3rem; color: var(--text-secondary); max-width: 900px; margin: 0 auto; line-height: 1.7;}
+        
+        /* Approach Section */
+        .approach-section {background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%);}
+        .approach-intro {max-width: 1000px; margin: 0 auto 4rem; font-size: 1.3rem; line-height: 1.9; color: var(--text-primary); text-align: center; padding: 3rem; background: linear-gradient(135deg, var(--sky-pale) 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 20px; border: 3px solid var(--gold); box-shadow: 0 8px 30px rgba(0,0,0,0.08);}
+        .approach-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem;}
+        .approach-card {background: var(--white); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; position: relative; overflow: hidden;}
+        .approach-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);}
+        .approach-card:hover {transform: translateY(-5px); box-shadow: 0 12px 40px rgba(14, 165, 233, 0.2); border-color: var(--sky-blue);}
+        .approach-icon {width: 80px; height: 80px; background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);}
+        .approach-card h3 {font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy-dark);}
+        .approach-card p {color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem;}
+
+        /* Launch Framework Section */
+        .framework-section {background: var(--white);}
+        .framework-intro {max-width: 1000px; margin: 0 auto 3rem; font-size: 1.2rem; line-height: 1.8; color: var(--text-primary); text-align: center;}
+        
+        .launch-clock-highlight {background: linear-gradient(135deg, var(--sky-pale) 0%, rgba(245, 158, 11, 0.15) 100%); padding: 2.5rem; border-radius: 16px; border: 3px solid var(--gold); margin: 3rem auto; max-width: 1000px; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.1);}
+        .launch-clock-highlight h3 {font-size: 2rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1rem;}
+        .launch-clock-highlight .clock-icon {font-size: 4rem; margin-bottom: 1rem;}
+        .launch-clock-highlight p {font-size: 1.2rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 0;}
+
+        .framework-stages {display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; margin: 3rem 0;}
+        .stage-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 2rem; border-radius: 16px; border: 2px solid var(--border); transition: all 0.3s; position: relative; text-align: center;}
+        .stage-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);}
+        .stage-card:hover {transform: translateY(-5px); box-shadow: 0 12px 40px rgba(14, 165, 233, 0.15); border-color: var(--sky-blue);}
+        .stage-number {width: 50px; height: 50px; background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 1.3rem; margin: 0 auto 1rem; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);}
+        .stage-card h4 {font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--navy-dark);}
+        .stage-timing {display: inline-block; padding: 0.4rem 0.8rem; background: var(--sky-pale); color: var(--navy); border-radius: 6px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem;}
+        .stage-card p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;}
+        .stage-question {font-size: 0.9rem; color: var(--navy); font-weight: 600; font-style: italic; padding: 0.8rem; background: var(--sky-pale); border-radius: 8px; border-left: 3px solid var(--gold);}
+
+        .framework-table {background: var(--white); border-radius: 16px; padding: 2.5rem; border: 2px solid var(--border); box-shadow: 0 8px 30px rgba(0,0,0,0.08); margin-top: 3rem; overflow-x: auto;}
+        .framework-table table {width: 100%; border-collapse: collapse;}
+        .framework-table th {background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); color: var(--white); padding: 1rem; text-align: left; font-weight: 700; font-size: 0.95rem;}
+        .framework-table th:first-child {border-radius: 10px 0 0 0;}
+        .framework-table th:last-child {border-radius: 0 10px 0 0;}
+        .framework-table td {padding: 1.2rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-primary); font-size: 0.95rem; line-height: 1.6;}
+        .framework-table tr:last-child td {border-bottom: none;}
+        .framework-table tr:hover {background: var(--sky-pale);}
+        
+        /* Modes Section */
+        .modes-section {background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);}
+        .mode-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 3.5rem; border-radius: 20px; border: 3px solid var(--border); margin-bottom: 2rem; transition: all 0.3s; position: relative; cursor: pointer;}
+        .mode-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--navy) 100%);}
+        .mode-card:hover {border-color: var(--sky-blue); box-shadow: 0 15px 50px rgba(14, 165, 233, 0.15);}
+        .mode-card.expanded {border-color: var(--gold);}
+        .mode-header {display: flex; align-items: center; gap: 2rem; padding-bottom: 0; border-bottom: none;}
+        .mode-icon {width: 90px; height: 90px; background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--white); flex-shrink: 0; box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);}
+        .mode-title-section {flex: 1;}
+        .mode-title h3 {font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--navy-dark);}
+        .mode-subtitle {color: var(--sky-blue); font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;}
+        .mode-toggle {width: 40px; height: 40px; background: var(--sky-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--navy); transition: all 0.3s;}
+        .mode-card:hover .mode-toggle {background: var(--gold); color: var(--white);}
+        .mode-card.expanded .mode-toggle {transform: rotate(180deg); background: var(--gold); color: var(--white);}
+        .mode-content {max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out;}
+        .mode-card.expanded .mode-content {max-height: 2000px; transition: max-height 0.5s ease-in;}
+        .mode-description {font-size: 1.15rem; color: var(--text-primary); margin: 2rem 0; line-height: 1.8; font-weight: 500; padding-top: 2rem; border-top: 2px solid var(--border);}
+        .mode-features {list-style: none;}
+        .mode-features li {padding: 1.2rem 1.5rem; background: var(--white); border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold); color: var(--text-secondary); display: flex; align-items: start; gap: 1rem; transition: all 0.3s; line-height: 1.7;}
+        .mode-features li:hover {border-left-width: 6px; transform: translateX(5px); background: var(--sky-pale);}
+        .mode-features li::before {content: '▸'; color: var(--gold); font-weight: 800; font-size: 1.3rem; flex-shrink: 0;}
+
+        /* Launch Architecture Section */
+        .architecture-section {background: var(--white);}
+        .workstreams-container {display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-top: 3rem;}
+        .workstream-type {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 3rem; border-radius: 16px; border: 2px solid var(--border); transition: all 0.3s;}
+        .workstream-type:hover {box-shadow: 0 12px 40px rgba(14, 165, 233, 0.15); border-color: var(--sky-blue);}
+        .workstream-header {display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--border);}
+        .workstream-icon {width: 70px; height: 70px; background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);}
+        .workstream-header h3 {font-size: 1.8rem; font-weight: 800; color: var(--navy-dark);}
+        .workstream-list {list-style: none;}
+        .workstream-list li {padding: 1rem 1.5rem; margin-bottom: 1rem; background: var(--white); border-radius: 10px; border-left: 4px solid var(--gold); transition: all 0.3s; line-height: 1.7;}
+        .workstream-list li:hover {transform: translateX(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.08);}
+        .workstream-list strong {color: var(--navy-dark); font-weight: 700;}
+
+        /* Workflow Section */
+        .workflow-section {background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);}
+        .workflow-container {max-width: 1000px; margin: 3rem auto 0; position: relative;}
+        .workflow-container::before {content: ''; position: absolute; left: 40px; top: 60px; bottom: 60px; width: 3px; background: linear-gradient(180deg, var(--sky-blue) 0%, var(--gold) 100%);}
+        .workflow-step {display: flex; gap: 2.5rem; margin-bottom: 3.5rem; position: relative;}
+        .step-number {width: 80px; height: 80px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 2rem; flex-shrink: 0; z-index: 1; box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3); border: 4px solid var(--gold);}
+        .step-content {flex: 1; background: var(--white); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06);}
+        .step-content h3 {font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy-dark);}
+        .step-content p {color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;}
+        
+        /* CTA Section */
+        .cta-section {background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); padding: 6rem 2.5rem; text-align: center; color: var(--white); position: relative; overflow: hidden;}
+        .cta-section::before {content: ''; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);}
+        .cta-section::after {content: ''; position: absolute; bottom: -50%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);}
+        .cta-content {position: relative; z-index: 1;}
+        .cta-content h2 {font-size: 3.5rem; margin-bottom: 1.5rem; color: var(--white); font-weight: 800;}
+        .cta-content p {font-size: 1.4rem; margin-bottom: 3rem; color: rgba(255, 255, 255, 0.9); max-width: 800px; margin-left: auto; margin-right: auto;}
+        .cta-buttons {display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;}
+        .btn {padding: 1.2rem 2.5rem; border-radius: 12px; font-weight: 700; font-size: 1.1rem; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.8rem; font-family: inherit;}
+        .btn-primary {background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: var(--navy-dark); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);}
+        .btn-primary:hover {transform: translateY(-3px); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.5);}
+        .btn-secondary {background: var(--white); color: var(--navy); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);}
+        .btn-secondary:hover {transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);}
+
+        /* Footer */
+        footer {background: var(--navy-dark); color: rgba(255, 255, 255, 0.8); padding: 4rem 0 2rem;}
+        .footer-content {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 4rem; margin-bottom: 3rem;}
+        .footer-logo {display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.5rem;}
+        .footer-logo img {height: 40px; width: auto;}
+        .footer-logo span {font-size: 1.3rem; font-weight: 700; color: var(--white);}
+        .footer-description {line-height: 1.7; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);}
+        .footer-section h4 {color: var(--white); font-weight: 700; margin-bottom: 1.5rem; font-size: 1.1rem;}
+        .footer-links {list-style: none;}
+        .footer-links li {margin-bottom: 0.8rem;}
+        .footer-links a {color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s; font-size: 0.95rem;}
+        .footer-links a:hover {color: var(--sky-blue);}
+        .footer-bottom {max-width: 1320px; margin: 0 auto; padding: 2rem 2.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);}
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .approach-grid {grid-template-columns: repeat(2, 1fr);}
+            .framework-stages {grid-template-columns: repeat(2, 1fr);}
+            .workstreams-container {grid-template-columns: 1fr;}
+            .footer-content {grid-template-columns: repeat(2, 1fr);}
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {font-size: 2.5rem;}
+            .approach-grid, .framework-stages {grid-template-columns: 1fr;}
+            .mode-header {flex-direction: column; text-align: center;}
+            nav {flex-direction: column; gap: 1rem;}
+            nav ul {flex-direction: column;}
+            .footer-content {grid-template-columns: 1fr;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="25_11_13_LC_logo-Transp.png" alt="Launch Copilot">
+            </a>
+            <div class="nav-container">
+                <ul>
+                    <li>
+                        <a href="index.html">Why Launch Copilot</a>
+                    </li>
+                    <li>
+                        <a href="2-how-it-works.html" class="active">How It Works</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#hero">Overview</a></li>
+                            <li><a href="#approach">Our Approach</a></li>
+                            <li><a href="#framework">Launch Excellence Framework</a></li>
+                            <li><a href="#modes">Four Intelligent Modes</a></li>
+                            <li><a href="#architecture">Launch Architecture</a></li>
+                            <li><a href="#workflow">Implementation Workflow</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="3-request-demo.html">Request Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Intelligent Launch Orchestration</div>
+            <h1>How <span class="highlight">Launch Copilot</span> Works</h1>
+            <p class="hero-subtitle">Four intelligent modes that transform pharmaceutical launch execution—from strategic coaching to deliverable creation to cross-functional orchestration to quality assurance. Powered by deep pharmaceutical launch expertise and purpose-built AI.</p>
+        </div>
+    </section>
+
+    <section id="approach" class="approach-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Approach</span>
+                <h2>Built on <span class="gold-highlight">Proven Launch Excellence</span></h2>
+                <p class="section-description">Launch Copilot embeds pharmaceutical launch expertise that typically exists only in the minds of seasoned launch leaders—making institutional knowledge accessible, actionable, and continuously improving.</p>
+            </div>
+
+            <div class="approach-intro">
+                <strong>Not just project management, but launch intelligence.</strong> Launch Copilot understands that pharmaceutical launches require more than tracking tasks—they demand strategic orchestration across complex stakeholder landscapes, evolving competitive dynamics, and compressed timelines where every decision creates cascading dependencies.
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-icon">🧠</div>
+                    <h3>Pharmaceutical Launch Expertise</h3>
+                    <p>Built-in knowledge of medical affairs strategies, market access dynamics, regulatory pathways, commercial execution, and therapeutic area nuances that inform every recommendation and analysis.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">🎯</div>
+                    <h3>Jobs-to-Be-Done Framework</h3>
+                    <p>Organized around the actual work patterns of launch teams—not generic project management structures. Each mode addresses a specific "job" that launch professionals need to accomplish.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">🔄</div>
+                    <h3>Continuous Learning</h3>
+                    <p>The platform learns from your launches, building organizational intelligence that improves recommendations, accelerates execution, and prevents repeating past mistakes.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">⚡</div>
+                    <h3>Context-Aware Intelligence</h3>
+                    <p>Understands your therapeutic area, competitive landscape, organizational capabilities, and strategic priorities to deliver relevant, actionable guidance rather than generic best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="framework" class="framework-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Launch Excellence Framework</span>
+                <h2>Five Stages to <span class="gold-highlight">Launch Success</span></h2>
+                <p class="section-description">Launch Copilot structures pharmaceutical launches around five critical stages, each with distinct objectives, timelines, and decision requirements. This framework ensures your team stays aligned on what matters at each phase.</p>
+            </div>
+
+            <div class="framework-intro">
+                Every successful pharmaceutical launch progresses through distinct phases, each requiring different capabilities, decision-making frameworks, and success criteria. Launch Copilot provides stage-appropriate guidance, tools, and orchestration throughout your launch journey.
+            </div>
+
+            <div class="launch-clock-highlight">
+                <div class="clock-icon">⏰</div>
+                <h3>The Launch Clock™</h3>
+                <p>All timing is referenced relative to your launch date (L), enabling precise coordination across teams and markets regardless of where they are in their launch journey. The Launch Clock ensures everyone understands urgency, sequencing, and dependencies in relation to your critical milestone.</p>
+            </div>
+
+            <div class="framework-stages">
+                <div class="stage-card">
+                    <div class="stage-number">1</div>
+                    <h4>Insight</h4>
+                    <div class="stage-timing">L-24 → L-18</div>
+                    <p>Understand reality with brutal honesty: market dynamics, patient journeys, access barriers, competitive threats, and strategic risks.</p>
+                    <div class="stage-question">What must be true to win here?</div>
+                </div>
+
+                <div class="stage-card">
+                    <div class="stage-number">2</div>
+                    <h4>Ambition</h4>
+                    <div class="stage-timing">L-18 → L-15</div>
+                    <p>Define "how we will win" with clear positioning, resource alignment, and success criteria that the entire organization commits to.</p>
+                    <div class="stage-question">What future are we committing to create?</div>
+                </div>
+
+                <div class="stage-card">
+                    <div class="stage-number">3</div>
+                    <h4>Readiness</h4>
+                    <div class="stage-timing">L-15 → L-6</div>
+                    <p>Build capabilities and organizational alignment required to execute the ambition—from field training to payer materials to systems integration.</p>
+                    <div class="stage-question">Are the right things being built right?</div>
+                </div>
+
+                <div class="stage-card">
+                    <div class="stage-number">4</div>
+                    <h4>Activation</h4>
+                    <div class="stage-timing">L-9 → L+3</div>
+                    <p>Deploy in-market to accelerate uptake through coordinated medical, commercial, and market access execution at critical moments.</p>
+                    <div class="stage-question">Are we winning in moments that matter?</div>
+                </div>
+
+                <div class="stage-card">
+                    <div class="stage-number">5</div>
+                    <h4>Impact</h4>
+                    <div class="stage-timing">L+3 → L+12</div>
+                    <p>Measure, optimize, and accelerate results while locking in sustainable advantage and capturing learnings for future launches.</p>
+                    <div class="stage-question">How do we scale and sustain advantage?</div>
+                </div>
+            </div>
+
+            <div class="framework-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Time (Launch Clock)</th>
+                            <th>Core Purpose</th>
+                            <th>Proof Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Insight</strong></td>
+                            <td>L-24 → L-18</td>
+                            <td>Understand reality: market, patient, access, competition, risks</td>
+                            <td>Opportunity fit, risk clarity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ambition</strong></td>
+                            <td>L-18 → L-15</td>
+                            <td>Define "how we will win" + resource alignment</td>
+                            <td>Launch ambition scorecard</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Readiness</strong></td>
+                            <td>L-15 → L-6</td>
+                            <td>Build capabilities & organizational alignment</td>
+                            <td>Cross-functional readiness metrics</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Activation</strong></td>
+                            <td>L-9 → L+3</td>
+                            <td>Deploy and execute in the market</td>
+                            <td>Uptake + field traction signals</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Impact</strong></td>
+                            <td>L+3 → L+12</td>
+                            <td>Measure, optimize, and accelerate results</td>
+                            <td>Launch KPIs delivering on ambition</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="modes" class="modes-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Four Intelligent Modes</span>
+                <h2>Every Job Your <span class="gold-highlight">Launch Team Needs</span></h2>
+                <p class="section-description">Launch Copilot adapts to the specific task at hand through four distinct modes, each optimized for different types of launch work—from strategic thinking to execution to oversight.</p>
+            </div>
+
+            <div class="mode-card" onclick="toggleMode(this)">
+                <div class="mode-header">
+                    <div class="mode-icon">💡</div>
+                    <div class="mode-title-section">
+                        <div class="mode-title">
+                            <h3>Guide Mode</h3>
+                        </div>
+                        <div class="mode-subtitle">Strategic Coaching & Decision Support</div>
+                    </div>
+                    <div class="mode-toggle">▼</div>
+                </div>
+                <div class="mode-content">
+                    <p class="mode-description">Your AI launch strategist that helps teams think through complex decisions, evaluate trade-offs, and navigate launch challenges with pharmaceutical-specific expertise. Guide Mode asks the right questions, surfaces relevant considerations, and provides framework-based coaching.</p>
+                    <ul class="mode-features">
+                        <li>Strategic decision frameworks for positioning, segmentation, and resource allocation aligned with pharmaceutical launch best practices</li>
+                        <li>Risk assessment and scenario planning considering competitive moves, payer dynamics, and regulatory contingencies</li>
+                        <li>Cross-functional alignment guidance to ensure medical, commercial, and market access strategies work together</li>
+                        <li>Therapeutic area-specific insights drawing from comparable launches and industry intelligence</li>
+                        <li>Launch readiness gap analysis identifying critical capabilities, dependencies, and potential delays</li>
+                        <li>Stakeholder mapping and engagement strategy tailored to your specific KOLs, payers, and patient advocacy landscape</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mode-card" onclick="toggleMode(this)">
+                <div class="mode-header">
+                    <div class="mode-icon">✍️</div>
+                    <div class="mode-title-section">
+                        <div class="mode-title">
+                            <h3>Builder Mode</h3>
+                        </div>
+                        <div class="mode-subtitle">Intelligent Content Creation</div>
+                    </div>
+                    <div class="mode-toggle">▼</div>
+                </div>
+                <div class="mode-content">
+                    <p class="mode-description">Transform strategic insights into high-quality launch deliverables 40-50% faster. Builder Mode creates medical education content, brand positioning, payer value stories, field tools, and executive briefings that align with your launch strategy and therapeutic area requirements.</p>
+                    <ul class="mode-features">
+                        <li>Medical affairs materials including disease education, MOA explanations, clinical data summaries, and KOL presentation decks</li>
+                        <li>Market access documents such as value dossiers, HEOR evidence summaries, payer objection responses, and formulary positioning</li>
+                        <li>Commercial content including brand messaging, HCP detail aids, patient education materials, and sales training modules</li>
+                        <li>Leadership briefings synthesizing launch status, strategic decisions, risk assessments, and resource requirements</li>
+                        <li>Regulatory and compliance documentation with appropriate caveats, substantiation, and review-ready formatting</li>
+                        <li>Integration with your templates, brand guidelines, and medical-legal review workflows to ensure consistency</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mode-card" onclick="toggleMode(this)">
+                <div class="mode-header">
+                    <div class="mode-icon">⚙️</div>
+                    <div class="mode-title-section">
+                        <div class="mode-title">
+                            <h3>Orchestrator Mode</h3>
+                        </div>
+                        <div class="mode-subtitle">Cross-Functional Coordination</div>
+                    </div>
+                    <div class="mode-toggle">▼</div>
+                </div>
+                <div class="mode-content">
+                    <p class="mode-description">Enterprise-grade launch governance providing portfolio visibility, dependency management, and automated status synthesis. Orchestrator Mode ensures executives have the intelligence they need while minimizing coordination overhead for teams.</p>
+                    <ul class="mode-features">
+                        <li>Portfolio countdown dashboards showing readiness status, timeline risks, and strategic priorities across all launches</li>
+                        <li>Automated status synthesis eliminating manual reporting while providing leadership with actionable intelligence</li>
+                        <li>Dependency mapping and conflict detection identifying cross-functional bottlenecks before they impact timelines</li>
+                        <li>Resource allocation visibility showing team capacity, competing priorities, and potential staffing gaps</li>
+                        <li>Milestone tracking with automated escalation when critical path items show early warning signals</li>
+                        <li>Cross-launch learning enabling teams to leverage insights, templates, and strategies from past launches</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mode-card" onclick="toggleMode(this)">
+                <div class="mode-header">
+                    <div class="mode-icon">✅</div>
+                    <div class="mode-title-section">
+                        <div class="mode-title">
+                            <h3>Reviewer Mode</h3>
+                        </div>
+                        <div class="mode-subtitle">Quality Assurance & Compliance</div>
+                    </div>
+                    <div class="mode-toggle">▼</div>
+                </div>
+                <div class="mode-content">
+                    <p class="mode-description">Systematic quality assessment that catches gaps, inconsistencies, and compliance issues before they reach stakeholders. Reviewer Mode applies pharmaceutical launch best practices and your organization's standards to every deliverable.</p>
+                    <ul class="mode-features">
+                        <li>Brand consistency verification ensuring all materials align with approved positioning, messaging, and visual identity</li>
+                        <li>Competitive positioning validation checking that materials address known competitor claims and payer objections</li>
+                        <li>Medical-legal compliance screening for potential issues with substantiation, off-label implications, or regulatory requirements</li>
+                        <li>Cross-functional alignment checking that medical, commercial, and market access materials tell a coherent story</li>
+                        <li>Therapeutic area benchmarking against success criteria and best practices from comparable launches</li>
+                        <li>Readiness gap identification highlighting missing capabilities, incomplete materials, or dependency risks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="architecture" class="architecture-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Launch Architecture</span>
+                <h2>Orchestrating <span class="gold-highlight">Functional Excellence</span> and Strategic Oversight</h2>
+                <p class="section-description">Launch Copilot brings structure to both the functional workstreams that create launch deliverables and the oversight mechanisms that ensure cross-functional alignment, quality standards, and strategic coherence.</p>
+            </div>
+
+            <div class="workstreams-container">
+                <div class="workstream-type">
+                    <div class="workstream-header">
+                        <div class="workstream-icon">🔧</div>
+                        <h3>Functional Workstreams</h3>
+                    </div>
+                    <ul class="workstream-list">
+                        <li><strong>Medical Affairs:</strong> Medical education strategy, scientific communications, publications planning, MSL training, KOL engagement, advisory boards, congress strategy</li>
+                        <li><strong>Commercial:</strong> Brand positioning, marketing campaigns, omnichannel strategy, sales force training and enablement, patient services design, DTC planning</li>
+                        <li><strong>Market Access:</strong> Payer engagement strategy, HEOR evidence generation, value dossier development, reimbursement positioning, pricing strategy, pull-through programs</li>
+                        <li><strong>Regulatory & Compliance:</strong> Regulatory submissions, labeling negotiations, promotional material review, adverse event management, post-marketing commitments</li>
+                        <li><strong>Operations & Supply:</strong> Supply chain readiness, distribution strategy, demand forecasting, patient support program infrastructure, specialty pharmacy relationships</li>
+                    </ul>
+                </div>
+
+                <div class="workstream-type">
+                    <div class="workstream-header">
+                        <div class="workstream-icon">🎯</div>
+                        <h3>Oversight & Alignment Workstreams</h3>
+                    </div>
+                    <ul class="workstream-list">
+                        <li><strong>Launch Governance:</strong> Steering committee operations, decision-making frameworks, escalation protocols, cross-functional prioritization, resource allocation</li>
+                        <li><strong>Cross-Functional Integration:</strong> Dependency identification and management, handoff protocols between teams, integration testing of connected deliverables, conflict resolution</li>
+                        <li><strong>Quality Assurance:</strong> Standards definition and enforcement, deliverable reviews against benchmarks, compliance verification, brand consistency checks</li>
+                        <li><strong>Risk & Issue Management:</strong> Systematic risk identification, impact assessment, mitigation planning, recovery scenario development, lessons learned capture</li>
+                        <li><strong>Performance & Readiness:</strong> KPI definition and tracking, readiness scoring, stakeholder reporting, launch rehearsals, go/no-go decision support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="workflow-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Implementation Workflow</span>
+                <h2>From Setup to <span class="gold-highlight">Launch Success</span></h2>
+                <p class="section-description">Launch Copilot implementation follows a proven path from initial configuration through active launch management to post-launch optimization and learning capture.</p>
+            </div>
+
+            <div class="workflow-container">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Strategic Foundation & Configuration</h3>
+                        <p>We configure Launch Copilot to match your organization's launch methodology, governance structure, templates, and terminology. This includes integrating with your existing systems (SharePoint, CRM, data platforms), defining your Launch Excellence standards, and customizing the platform to reflect your therapeutic area priorities and competitive landscape.</p>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Team Onboarding & Knowledge Transfer</h3>
+                        <p>Role-specific training ensures every team member understands how to leverage Launch Copilot for their specific responsibilities—from launch leads using Orchestrator Mode for governance to functional teams using Builder and Reviewer Modes for deliverable development. We transfer pharmaceutical launch expertise embedded in the platform to your teams through guided workflows and decision frameworks.</p>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Active Launch Management & Intelligence</h3>
+                        <p>During launch execution, Launch Copilot continuously monitors readiness, identifies risks early, orchestrates cross-functional work, and provides real-time intelligence to leadership. The platform learns from your launch decisions and execution patterns, becoming more valuable with each use. Teams reclaim time from coordination overhead while leadership gains unprecedented visibility into launch health.</p>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Post-Launch Optimization & Learning Capture</h3>
+                        <p>As you transition from launch to sustained commercial execution, Launch Copilot systematically captures what worked, what didn't, and why—transforming situational knowledge into institutional intelligence. These insights inform future launches across your portfolio, creating a compounding learning advantage that makes each subsequent launch more efficient and effective than the last.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2>Experience the Four Modes in Action</h2>
+            <p>See how Launch Copilot transforms pharmaceutical launch execution with your actual context</p>
+            <div class="cta-buttons">
+                <a href="3-request-demo.html" class="btn btn-primary">Request a Personalized Demo</a>
+                <a href="index.html" class="btn btn-secondary">Why Launch Copilot</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">
+                    <img src="25_11_13_LC_logo-Transp.png" alt="Launch Copilot">
+                </div>
+                <p class="footer-description">AI-powered pharmaceutical launch excellence platform transforming how biopharma organizations orchestrate complex product launches.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Why Launch Copilot</a></li>
+                    <li><a href="2-how-it-works.html">How It Works</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Clariem</a></li>
+                    <li><a href="3-request-demo.html">Contact</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Clariem Inc. All rights reserved.</div>
+    </footer>
+
+    <script>
+        function toggleMode(card) {
+            card.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
