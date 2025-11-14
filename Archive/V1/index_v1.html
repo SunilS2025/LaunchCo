@@ -13,6 +13,7 @@
         }
 
         :root {
+            /* Primary Color Palette */
             --sky-blue: #0EA5E9;
             --sky-blue-light: #7DD3FC;
             --sky-pale: #E0F2FE;
@@ -21,6 +22,8 @@
             --gold: #F59E0B;
             --gold-light: #FCD34D;
             --white: #FFFFFF;
+            
+            /* Semantic Colors */
             --text-primary: #1E293B;
             --text-secondary: #64748B;
             --background: #F8FAFC;
@@ -34,7 +37,6 @@
             line-height: 1.7;
             color: var(--text-primary);
             background-color: var(--white);
-            scroll-behavior: smooth;
         }
 
         /* Header */
@@ -65,12 +67,19 @@
             align-items: center;
             gap: 0.7rem;
             letter-spacing: -0.02em;
-            text-decoration: none;
         }
 
-        .logo img {
-            height: 45px;
-            width: auto;
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
         nav ul {
@@ -192,7 +201,6 @@
             gap: 0.7rem;
             cursor: pointer;
             border: none;
-            font-family: inherit;
         }
 
         .btn-primary {
@@ -217,13 +225,14 @@
             color: var(--white);
         }
 
-        /* Container and Sections */
+        /* Container */
         .container {
             max-width: 1320px;
             margin: 0 auto;
             padding: 0 2.5rem;
         }
 
+        /* Section Styles */
         section {
             padding: 6rem 0;
         }
@@ -290,14 +299,14 @@
 
         .challenges-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .challenge-card {
             background: var(--white);
-            padding: 2.5rem;
+            padding: 2.8rem;
             border-radius: 16px;
             border: 2px solid var(--border);
             transition: all 0.3s;
@@ -328,15 +337,6 @@
             transform: translateY(-5px);
         }
 
-        .challenge-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border);
-        }
-
         .challenge-icon {
             width: 64px;
             height: 64px;
@@ -346,13 +346,14 @@
             align-items: center;
             justify-content: center;
             font-size: 2rem;
+            margin-bottom: 1.8rem;
             border: 2px solid var(--sky-blue);
-            flex-shrink: 0;
         }
 
         .challenge-card h3 {
             font-size: 1.4rem;
             font-weight: 700;
+            margin-bottom: 1rem;
             color: var(--navy-dark);
             line-height: 1.3;
         }
@@ -406,17 +407,16 @@
             font-weight: 500;
         }
 
-        /* Role-Specific Solutions Section */
-        .solutions-section {
+        /* Stakeholder Section */
+        .stakeholder-section {
             background: var(--white);
         }
 
         .stakeholder-tabs {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
         }
 
         .tab-btn {
@@ -424,9 +424,9 @@
             background: var(--background);
             border: 2px solid var(--border);
             border-radius: 12px;
-            color: var(--text-secondary);
+            font-size: 1rem;
             font-weight: 600;
-            font-size: 0.95rem;
+            color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.3s;
             font-family: inherit;
@@ -434,14 +434,13 @@
 
         .tab-btn:hover {
             border-color: var(--sky-blue);
-            background: var(--sky-pale);
-            color: var(--navy);
+            color: var(--sky-blue);
         }
 
         .tab-btn.active {
             background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            border-color: var(--sky-blue);
             color: var(--white);
-            border-color: var(--navy);
             box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
         }
 
@@ -462,54 +461,85 @@
         .journey-container {
             background: var(--white);
             border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
             border: 2px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
 
         .journey-header {
+            background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 100%);
+            padding: 3rem;
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid var(--border);
+            border-bottom: 3px solid var(--gold);
         }
 
         .journey-header h3 {
             font-size: 2rem;
-            font-weight: 800;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
             color: var(--navy-dark);
-            margin-bottom: 0.5rem;
         }
 
         .journey-header p {
+            color: var(--navy);
             font-size: 1.1rem;
-            color: var(--text-secondary);
+            font-weight: 600;
         }
 
         .journey-body {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
-            gap: 3rem;
-            align-items: start;
+            gap: 0;
+        }
+
+        .from-state, .to-state {
+            padding: 3.5rem 3rem;
+        }
+
+        .from-state {
+            background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+        }
+
+        .to-state {
+            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
         }
 
         .state-label {
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
-            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid;
         }
 
         .from-state .state-label {
-            background: linear-gradient(135deg, #FEE2E2 0%, #FCA5A5 100%);
-            color: #991B1B;
+            color: var(--error);
+            border-color: var(--error);
         }
 
         .to-state .state-label {
-            background: linear-gradient(135deg, #D1FAE5 0%, #6EE7B7 100%);
-            color: #065F46;
+            color: var(--success);
+            border-color: var(--success);
+        }
+
+        .state-label::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .from-state .state-label::before {
+            background: var(--error);
+        }
+
+        .to-state .state-label::before {
+            background: var(--success);
         }
 
         .state-list {
@@ -517,56 +547,46 @@
         }
 
         .state-list li {
-            padding: 1.2rem 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-primary);
             line-height: 1.7;
             font-size: 1.05rem;
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-        }
-
-        .from-state .state-list li {
-            background: #FEF2F2;
-            border-left: 4px solid #EF4444;
-            color: var(--text-primary);
+            font-weight: 500;
         }
 
         .from-state .state-list li::before {
-            content: '✗';
-            color: #EF4444;
+            content: '✕';
+            position: absolute;
+            left: 0;
+            color: var(--error);
             font-weight: 800;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        .to-state .state-list li {
-            background: #F0FDF4;
-            border-left: 4px solid var(--success);
-            color: var(--text-primary);
+            font-size: 1.4rem;
         }
 
         .to-state .state-list li::before {
             content: '✓';
+            position: absolute;
+            left: 0;
             color: var(--success);
             font-weight: 800;
             font-size: 1.3rem;
-            flex-shrink: 0;
         }
 
         .arrow-divider {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-top: 4rem;
+            background: linear-gradient(180deg, var(--sky-pale) 0%, var(--gold-light) 100%);
+            width: 100px;
+            position: relative;
         }
 
         .arrow-divider svg {
-            width: 60px;
-            height: 60px;
-            color: var(--gold);
-            filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.3));
+            width: 50px;
+            height: 50px;
+            color: var(--navy);
         }
 
         /* Outcomes Section */
@@ -582,29 +602,18 @@
         }
 
         .outcome-card {
-            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
+            background: var(--white);
             padding: 3rem;
             border-radius: 16px;
             border: 2px solid var(--border);
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .outcome-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);
         }
 
         .outcome-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(14, 165, 233, 0.15);
-            border-color: var(--sky-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
         }
 
         .outcome-header {
@@ -612,34 +621,125 @@
             align-items: center;
             gap: 1.5rem;
             margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border);
         }
 
         .outcome-icon {
-            font-size: 2.5rem;
             width: 70px;
             height: 70px;
             background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
-            border-radius: 14px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
             flex-shrink: 0;
-            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
         }
 
         .outcome-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--navy-dark);
-            line-height: 1.3;
         }
 
         .outcome-card p {
             color: var(--text-secondary);
             line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Workstreams Section */
+        .workstreams-section {
+            background: var(--white);
+        }
+
+        .workstreams-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .workstream-type {
+            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 3px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workstream-type::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--sky-blue) 0%, var(--navy) 100%);
+        }
+
+        .workstream-type:last-child::before {
+            background: linear-gradient(90deg, var(--gold) 0%, var(--navy) 100%);
+        }
+
+        .workstream-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .workstream-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .workstream-type:last-child .workstream-icon {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--navy) 100%);
+        }
+
+        .workstream-header h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+        }
+
+        .workstream-list {
+            list-style: none;
+        }
+
+        .workstream-list li {
+            padding: 1.3rem;
+            background: var(--white);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--sky-blue);
+            color: var(--text-secondary);
+            line-height: 1.7;
             font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+
+        .workstream-list li:hover {
+            border-left-width: 6px;
+            transform: translateX(5px);
+            background: var(--sky-pale);
+        }
+
+        .workstream-list li strong {
+            color: var(--navy-dark);
+            font-weight: 700;
         }
 
         /* CTA Section */
@@ -657,9 +757,10 @@
             position: absolute;
             top: -50%;
             right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .cta-section::after {
@@ -667,9 +768,10 @@
             position: absolute;
             bottom: -50%;
             left: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .cta-content {
@@ -677,20 +779,17 @@
             z-index: 1;
         }
 
-        .cta-content h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+        .cta-section h2 {
             color: var(--white);
-            font-weight: 800;
+            margin-bottom: 1.5rem;
+            font-size: 3.2rem;
         }
 
-        .cta-content p {
+        .cta-section p {
             font-size: 1.4rem;
             margin-bottom: 3rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            opacity: 0.95;
+            color: var(--sky-blue-light);
         }
 
         .cta-buttons {
@@ -700,110 +799,110 @@
             flex-wrap: wrap;
         }
 
-        .cta-buttons .btn-primary {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            color: var(--navy-dark);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
-        }
-
-        .cta-buttons .btn-secondary {
+        .cta-section .btn-primary {
             background: var(--white);
             color: var(--navy);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
-            border: none;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .cta-section .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--sky-blue-light);
+        }
+
+        .cta-section .btn-secondary:hover {
+            background: var(--sky-blue-light);
+            color: var(--navy);
         }
 
         /* Footer */
         footer {
             background: var(--navy-dark);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 4rem 0 2rem;
+            color: var(--white);
+            padding: 4rem 2.5rem 2rem;
         }
 
         .footer-content {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 0 2.5rem;
             display: grid;
-            grid-template-columns: 2fr repeat(3, 1fr);
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 4rem;
             margin-bottom: 3rem;
         }
 
         .footer-brand {
-            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 0.7rem;
-            margin-bottom: 1.5rem;
         }
 
-        .footer-logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .footer-logo span {
-            font-size: 1.3rem;
+        .footer-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--gold) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 700;
-            color: var(--white);
-        }
-
-        .footer-tagline {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 500;
-            margin-top: 0.5rem;
-            letter-spacing: 0.05em;
         }
 
         .footer-description {
-            line-height: 1.7;
+            color: #94A3B8;
+            line-height: 1.8;
             font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 1.5rem;
         }
 
         .footer-section h4 {
-            color: var(--white);
+            font-size: 1rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .footer-links {
             list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: #94A3B8;
             text-decoration: none;
             transition: color 0.3s;
             font-size: 0.95rem;
         }
 
         .footer-links a:hover {
-            color: var(--sky-blue);
+            color: var(--sky-blue-light);
         }
 
         .footer-bottom {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 2rem 2.5rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
             text-align: center;
+            color: #64748B;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 1200px) {
             .challenges-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -823,20 +922,16 @@
             }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 968px) {
             .hero h1 {
                 font-size: 3rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.3rem;
-            }
-
             h2 {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
             }
 
-            .outcomes-grid {
+            .challenges-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -845,47 +940,42 @@
             }
 
             .arrow-divider {
+                width: 100%;
+                height: 80px;
                 transform: rotate(90deg);
-                padding: 2rem 0;
+            }
+
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workstreams-container {
+                grid-template-columns: 1fr;
             }
 
             .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav > ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .challenges-grid {
                 grid-template-columns: 1fr;
             }
 
             .stakeholder-tabs {
                 flex-direction: column;
             }
+        }
 
-            .cta-buttons {
-                flex-direction: column;
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
             }
 
             .stats-container {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
                 grid-template-columns: 1fr;
             }
         }
@@ -894,35 +984,37 @@
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">
-                <img src="25_11_13__LC_logo-Transp.png" alt="Launch Copilot">
-            </a>
+            <div class="logo">
+                <div class="logo-icon">LC</div>
+                <span>Launch Copilot</span>
+            </div>
             <ul>
-                <li><a href="index.html" class="active">Why Launch Copilot</a></li>
-                <li><a href="2-how-it-works.html">How It Works</a></li>
-                <li><a href="3-request-demo.html">Request Demo</a></li>
+                <li><a href="#" class="active">Why Launch Copilot</a></li>
+                <li><a href="page2-how-it-works.html">How It Works</a></li>
+                <li><a href="page3-request-demo.html">Request Demo</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="hero" class="hero">
+    <div class="hero">
         <div class="hero-content">
             <span class="hero-label">Pharmaceutical Launch Excellence</span>
             <h1>Transform <span class="highlight">Complex Pharmaceutical Launches</span> into Predictable Success</h1>
             <p class="hero-subtitle">Launch Copilot is the AI-powered intelligence platform that brings structure, foresight, and decision support to every stage of your pharmaceutical launch—helping cross-functional teams navigate complexity and deliver measurable outcomes.</p>
             <div class="hero-cta">
-                <a href="2-how-it-works.html" class="btn btn-primary">
+                <a href="page2-how-it-works.html" class="btn btn-primary">
                     See How It Works
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
                 </a>
-                <a href="3-request-demo.html" class="btn btn-secondary">Request a Demo</a>
+                <a href="page3-request-demo.html" class="btn btn-secondary">Request a Demo</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="challenge" class="challenge-section">
+    <!-- Challenge Section -->
+    <section class="challenge-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">The Launch Challenge</span>
@@ -936,51 +1028,39 @@
 
             <div class="challenges-grid">
                 <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="challenge-icon">📊</div>
-                        <h3>Fragmented Information Systems</h3>
-                    </div>
+                    <div class="challenge-icon">📊</div>
+                    <h3>Fragmented Information Systems</h3>
                     <p>Launch materials scattered across SharePoint sites, email chains, and departmental drives. No single source of truth for readiness status, regulatory approvals, or cross-market dependencies. Teams waste 30% of their time simply finding the information they need to do their work.</p>
                 </div>
 
                 <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="challenge-icon">⚖️</div>
-                        <h3>Inconsistent Quality Standards</h3>
-                    </div>
+                    <div class="challenge-icon">⚖️</div>
+                    <h3>Inconsistent Quality Standards</h3>
                     <p>What constitutes "launch ready" varies wildly across franchises, markets, and therapeutic areas. Medical education materials lack consistency. Payer value propositions aren't benchmarked. HCP engagement strategies reinvent the wheel with each launch, despite similar precedents.</p>
                 </div>
 
                 <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="challenge-icon">🔥</div>
-                        <h3>Reactive Risk Detection</h3>
-                    </div>
+                    <div class="challenge-icon">🔥</div>
+                    <h3>Reactive Risk Detection</h3>
                     <p>Critical gaps surface days or weeks before pivotal regulatory milestones. Leadership discovers readiness issues when recovery options are limited. Risk identification depends on individual vigilance rather than systematic early-warning mechanisms.</p>
                 </div>
 
                 <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="challenge-icon">⏱️</div>
-                        <h3>Unsustainable Operational Overhead</h3>
-                    </div>
-                    <p>Launch leads spend 60% of their time coordinating, status-chasing, and manually consolidating information rather than strategic thinking. Teams create hundreds of status slides and reports rather than advancing actual launch work. The overhead scales with complexity—exactly when teams need efficiency most.</p>
+                    <div class="challenge-icon">⏱️</div>
+                    <h3>Unsustainable Operational Overhead</h3>
+                    <p>Brand teams drowning in program management tasks—status updates, alignment meetings, manual report compilation. Limited ability to leverage templates, frameworks, or learnings from previous launches. Every launch feels like starting from scratch.</p>
                 </div>
 
                 <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="challenge-icon">🔄</div>
-                        <h3>Lost Institutional Knowledge</h3>
-                    </div>
-                    <p>Hard-won lessons from past launches exist only in departed employees' memories or buried in final reports nobody reads. Each new launch reinvents approaches to similar challenges. Successful positioning frameworks, payer strategies, and operational playbooks aren't systematically captured, indexed, or reused.</p>
+                    <div class="challenge-icon">🔄</div>
+                    <h3>Cross-Functional Misalignment</h3>
+                    <p>Medical affairs, commercial, and market access operate with different success definitions and competing priorities. Executives receive conflicting messages from functional leaders. Strategic intent gets lost in translation to tactical execution.</p>
                 </div>
 
                 <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="challenge-icon">🎯</div>
-                        <h3>Strategic Context Disappears</h3>
-                    </div>
-                    <p>Why certain positioning was chosen, which alternatives were evaluated, what trade-offs were considered—this strategic context evaporates as soon as leadership meetings end. Execution teams implement tactics without understanding strategic intent, leading to drift and misalignment that compounds over months.</p>
+                    <div class="challenge-icon">📚</div>
+                    <h3>Learning Loss</h3>
+                    <p>Post-launch reviews capture valuable insights, but they sit in documents that rarely inform future launches. Institutional knowledge walks out the door with people. Launch Centers of Excellence struggle to systematize best practices at scale.</p>
                 </div>
             </div>
         </div>
@@ -1008,12 +1088,13 @@
         </div>
     </div>
 
-    <section id="solutions" class="solutions-section">
+    <!-- Stakeholder Journey Section -->
+    <section class="stakeholder-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Role-Specific Solutions</span>
-                <h2>Transforming <span class="gold-highlight">How Every Role</span> Experiences Launch</h2>
-                <p class="section-description">Launch Copilot addresses the distinct challenges faced by different roles—from team members creating deliverables to launch leads orchestrating work to executives making strategic decisions.</p>
+                <h2>Built for <span class="gold-highlight">Every Stakeholder</span> in the Launch Ecosystem</h2>
+                <p class="section-description">Launch Copilot understands that different roles face different challenges. We deliver targeted transformations based on what matters most to you—whether you're executing deliverables, orchestrating programs, or making strategic decisions.</p>
             </div>
 
             <div class="stakeholder-tabs">
@@ -1144,7 +1225,8 @@
         </div>
     </section>
 
-    <section id="outcomes" class="outcomes-section">
+    <!-- Outcomes Section -->
+    <section class="outcomes-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Measurable Impact</span>
@@ -1188,18 +1270,60 @@
         </div>
     </section>
 
+    <!-- Workstreams Section -->
+    <section class="workstreams-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Launch Architecture</span>
+                <h2>Orchestrating <span class="gold-highlight">Functional Excellence</span> and Strategic Oversight</h2>
+                <p class="section-description">Launch Copilot brings structure to both the functional workstreams that create launch deliverables and the oversight mechanisms that ensure cross-functional alignment, quality standards, and strategic coherence.</p>
+            </div>
+
+            <div class="workstreams-container">
+                <div class="workstream-type">
+                    <div class="workstream-header">
+                        <div class="workstream-icon">🔧</div>
+                        <h3>Functional Workstreams</h3>
+                    </div>
+                    <ul class="workstream-list">
+                        <li><strong>Medical Affairs:</strong> Medical education strategy, scientific communications, publications planning, MSL training, KOL engagement, advisory boards, congress strategy</li>
+                        <li><strong>Commercial:</strong> Brand positioning, marketing campaigns, omnichannel strategy, sales force training and enablement, patient services design, DTC planning</li>
+                        <li><strong>Market Access:</strong> Payer engagement strategy, HEOR evidence generation, value dossier development, reimbursement positioning, pricing strategy, pull-through programs</li>
+                        <li><strong>Regulatory & Compliance:</strong> Regulatory submissions, labeling negotiations, promotional material review, adverse event management, post-marketing commitments</li>
+                        <li><strong>Operations & Supply:</strong> Supply chain readiness, distribution strategy, demand forecasting, patient support program infrastructure, specialty pharmacy relationships</li>
+                    </ul>
+                </div>
+
+                <div class="workstream-type">
+                    <div class="workstream-header">
+                        <div class="workstream-icon">🎯</div>
+                        <h3>Oversight & Alignment Workstreams</h3>
+                    </div>
+                    <ul class="workstream-list">
+                        <li><strong>Launch Governance:</strong> Steering committee operations, decision-making frameworks, escalation protocols, cross-functional prioritization, resource allocation</li>
+                        <li><strong>Cross-Functional Integration:</strong> Dependency identification and management, handoff protocols between teams, integration testing of connected deliverables, conflict resolution</li>
+                        <li><strong>Quality Assurance:</strong> Standards definition and enforcement, deliverable reviews against benchmarks, compliance verification, brand consistency checks</li>
+                        <li><strong>Risk & Issue Management:</strong> Systematic risk identification, impact assessment, mitigation planning, recovery scenario development, lessons learned capture</li>
+                        <li><strong>Performance & Readiness:</strong> KPI definition and tracking, readiness scoring, stakeholder reporting, launch rehearsals, go/no-go decision support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
     <div class="cta-section">
         <div class="cta-content">
             <h2>Ready to Transform Your Pharmaceutical Launches?</h2>
             <p>See how Launch Copilot brings predictability, transparency, and strategic intelligence to complex product launches</p>
             <div class="cta-buttons">
-                <a href="2-how-it-works.html" class="btn btn-primary">
+                <a href="page2-how-it-works.html" class="btn btn-primary">
                     Explore How It Works
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
                 </a>
-                <a href="3-request-demo.html" class="btn btn-secondary">Request a Personalized Demo</a>
+                <a href="page3-request-demo.html" class="btn btn-secondary">Request a Personalized Demo</a>
             </div>
         </div>
     </div>
@@ -1208,36 +1332,41 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <img src="25_11_13__LC_logo-footer.jpg" alt="Launch Copilot">
+                    <div class="footer-logo-icon">LC</div>
+                    <span>Launch Copilot</span>
                 </div>
-                <div class="footer-tagline">A Clariem Product</div>
-                <p class="footer-description">AI-powered pharmaceutical launch excellence platform transforming how biopharma organizations orchestrate complex product launches.</p>
+                <p class="footer-description">AI-powered pharmaceutical launch excellence platform. A Clariem product designed to transform how biopharma organizations orchestrate complex product launches across medical, commercial, regulatory, and market access functions.</p>
             </div>
             <div class="footer-section">
-                <h4>Platform</h4>
+                <h4>Product</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Why Launch Copilot</a></li>
-                    <li><a href="2-how-it-works.html">How It Works</a></li>
-                    <li><a href="3-request-demo.html">Request Demo</a></li>
+                    <li><a href="#">Why Launch Copilot</a></li>
+                    <li><a href="page2-how-it-works.html">How It Works</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Webinars</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul class="footer-links">
                     <li><a href="#">About Clariem</a></li>
-                    <li><a href="3-request-demo.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul class="footer-links">
+                    <li><a href="page3-request-demo.html">Contact Us</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            © 2025 Clariem Inc. All rights reserved.
+            © 2025 Clariem Inc. All rights reserved. | Launch Copilot is a registered trademark.
         </div>
     </footer>
 

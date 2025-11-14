@@ -21,20 +21,11 @@
         nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
         .logo {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 0.7rem; text-decoration: none;}
         .logo img {height: 45px; width: auto;}
-        .nav-container {display: flex; align-items: center; gap: 2.5rem;}
         nav ul {list-style: none; display: flex; gap: 2.5rem;}
-        nav > ul > li {position: relative;}
         nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; font-size: 0.95rem;}
         nav a:hover {color: var(--sky-blue);}
         nav a.active {color: var(--navy); font-weight: 600;}
         nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);}
-        
-        /* Dropdown Menu */
-        .dropdown-menu {display: none; position: absolute; top: 100%; left: 0; background: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,0.12); border-radius: 8px; padding: 0.5rem 0; min-width: 220px; margin-top: 1.5rem; border: 1px solid var(--border);}
-        nav li:hover .dropdown-menu {display: block;}
-        .dropdown-menu li {padding: 0;}
-        .dropdown-menu a {display: block; padding: 0.8rem 1.5rem; font-size: 0.9rem; color: var(--text-secondary); border-left: 3px solid transparent; transition: all 0.2s;}
-        .dropdown-menu a:hover {background: var(--sky-pale); border-left-color: var(--sky-blue); color: var(--navy);}
         
         /* Hero */
         .hero {background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 50%, var(--sky-pale) 100%); padding: 6rem 2.5rem 5rem;}
@@ -103,9 +94,10 @@
         /* Footer */
         footer {background: var(--navy-dark); color: rgba(255, 255, 255, 0.8); padding: 4rem 0 2rem;}
         .footer-content {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 4rem; margin-bottom: 3rem;}
-        .footer-logo {display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.5rem;}
+        .footer-logo {display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem;}
         .footer-logo img {height: 40px; width: auto;}
         .footer-logo span {font-size: 1.3rem; font-weight: 700; color: var(--white);}
+        .footer-tagline {font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); font-weight: 500; margin-top: 0.5rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;}
         .footer-description {line-height: 1.7; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);}
         .footer-section h4 {color: var(--white); font-weight: 700; margin-bottom: 1.5rem; font-size: 1.1rem;}
         .footer-links {list-style: none;}
@@ -124,8 +116,7 @@
         @media (max-width: 768px) {
             .hero h1 {font-size: 2.5rem;}
             .features-grid {grid-template-columns: 1fr;}
-            nav {flex-direction: column; gap: 1rem;}
-            nav ul {flex-direction: column;}
+            nav ul {flex-direction: column; gap: 1rem;}
             .footer-content {grid-template-columns: 1fr;}
         }
     </style>
@@ -134,34 +125,21 @@
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <img src="25_11_13_LC_logo-Transp.png" alt="Launch Copilot">
+                <img src="25_11_13__LC_logo-Transp.png" alt="Launch Copilot">
             </a>
-            <div class="nav-container">
-                <ul>
-                    <li>
-                        <a href="index.html">Why Launch Copilot</a>
-                    </li>
-                    <li>
-                        <a href="2-how-it-works.html">How It Works</a>
-                    </li>
-                    <li>
-                        <a href="3-request-demo.html" class="active">Request Demo</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#hero">Request Demo</a></li>
-                            <li><a href="#features">Platform Features</a></li>
-                            <li><a href="#faq">FAQs</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <ul>
+                <li><a href="index.html">Why Launch Copilot</a></li>
+                <li><a href="2-how-it-works.html">How It Works</a></li>
+                <li><a href="3-request-demo.html" class="active">Request Demo</a></li>
+            </ul>
         </nav>
     </header>
 
     <section id="hero" class="hero">
         <div class="hero-content">
-            <div class="hero-label">See Launch Copilot in Action</div>
-            <h1>Request a <span class="highlight">Personalized Demo</span></h1>
-            <p class="hero-subtitle">Experience how Launch Copilot transforms pharmaceutical launch management with your specific therapeutic area, competitive landscape, and organizational context.</p>
+            <div class="hero-label">Schedule Your Demo</div>
+            <h1>See Launch Copilot <span class="highlight">Transform</span> Your Launch</h1>
+            <p class="hero-subtitle">Experience how we bring predictability and strategic intelligence to pharmaceutical launch execution—tailored to your therapeutic area and organizational context</p>
         </div>
     </section>
 
@@ -377,39 +355,35 @@
         <div class="footer-content">
             <div>
                 <div class="footer-logo">
-                    <img src="25_11_13_LC_logo-Transp.png" alt="Launch Copilot">
+                    <img src="25_11_13__LC_logo-footer.jpg" alt="Launch Copilot">
                 </div>
-                <p class="footer-description">AI-powered pharmaceutical launch excellence platform. A Clariem product designed to transform how biopharma organizations orchestrate complex product launches across medical, commercial, regulatory, and market access functions.</p>
+                <div class="footer-tagline">A Clariem Product</div>
+                <p class="footer-description">AI-powered pharmaceutical launch excellence platform transforming how biopharma organizations orchestrate complex product launches.</p>
             </div>
             <div class="footer-section">
-                <h4>Product</h4>
+                <h4>Platform</h4>
                 <ul class="footer-links">
                     <li><a href="index.html">Why Launch Copilot</a></li>
                     <li><a href="2-how-it-works.html">How It Works</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Pricing</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Case Studies</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Webinars</a></li>
+                    <li><a href="3-request-demo.html">Request Demo</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul class="footer-links">
                     <li><a href="#">About Clariem</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="3-request-demo.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">© 2025 Clariem Inc. All rights reserved. | Launch Copilot is a registered trademark.</div>
+        <div class="footer-bottom">© 2025 Clariem Inc. All rights reserved.</div>
     </footer>
 
     <script>

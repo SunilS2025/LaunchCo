@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Demo | Launch Copilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        :root {
+            --sky-blue: #0EA5E9; --sky-blue-light: #7DD3FC; --sky-pale: #E0F2FE;
+            --navy: #1E3A8A; --navy-dark: #1E293B;
+            --gold: #F59E0B; --gold-light: #FCD34D;
+            --white: #FFFFFF; --text-primary: #1E293B; --text-secondary: #64748B;
+            --background: #F8FAFC; --border: #E2E8F0;
+        }
+        body {font-family: 'Inter', sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
+        
+        /* Header */
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--sky-pale);}
+        nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
+        .logo {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 0.7rem; text-decoration: none;}
+        .logo img {height: 45px; width: auto;}
+        nav ul {list-style: none; display: flex; gap: 2.5rem;}
+        nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; font-size: 0.95rem;}
+        nav a:hover {color: var(--sky-blue);}
+        nav a.active {color: var(--navy); font-weight: 600;}
+        nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);}
+        
+        /* Hero */
+        .hero {background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 50%, var(--sky-pale) 100%); padding: 6rem 2.5rem 5rem;}
+        .hero-content {max-width: 1320px; margin: 0 auto; text-align: center;}
+        .hero-label {display: inline-block; padding: 0.6rem 1.2rem; background: var(--white); color: var(--navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--gold);}
+        .hero h1 {font-size: 4rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.1;}
+        .hero h1 .highlight {background: linear-gradient(135deg, var(--sky-blue) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+        .hero-subtitle {font-size: 1.5rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;}
+        
+        /* Container */
+        .container {max-width: 1320px; margin: 0 auto; padding: 5rem 2.5rem;}
+        .content-grid {display: grid; grid-template-columns: 1.3fr 1fr; gap: 5rem; align-items: start;}
+        
+        /* Form Section */
+        .form-section {background: var(--white); padding: 3.5rem; border-radius: 20px; border: 3px solid var(--border); box-shadow: 0 8px 30px rgba(0,0,0,0.08); position: relative;}
+        .form-section::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%); border-radius: 20px 20px 0 0;}
+        .form-section h2 {font-size: 2.2rem; font-weight: 800; margin-bottom: 2rem; color: var(--navy-dark);}
+        #hubspot-form-container {min-height: 400px;}
+        
+        /* Info Section */
+        .info-section h2 {font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--navy-dark);}
+        .info-section p {color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.8; font-size: 1.1rem;}
+        .benefits-list {list-style: none; margin-bottom: 3rem;}
+        .benefits-list li {display: flex; align-items: start; gap: 1.2rem; margin-bottom: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, var(--sky-pale) 0%, var(--white) 100%); border-radius: 12px; border-left: 4px solid var(--gold); transition: all 0.3s;}
+        .benefits-list li:hover {transform: translateX(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.08);}
+        .benefits-list li::before {content: '✓'; color: var(--sky-blue); font-weight: 800; font-size: 1.6rem; flex-shrink: 0;}
+        .contact-cards {display: grid; gap: 1.5rem;}
+        .contact-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 2rem; border-radius: 12px; border: 2px solid var(--border); border-left: 4px solid var(--sky-blue); display: flex; align-items: start; gap: 1.5rem; transition: all 0.3s;}
+        .contact-card:hover {border-left-width: 6px; border-color: var(--gold); transform: translateX(5px);}
+        .contact-icon {width: 56px; height: 56px; background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; color: var(--white); box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);}
+        .contact-card h3 {font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy-dark);}
+        .contact-card p {color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.5rem;}
+        .contact-card a {color: var(--sky-blue); text-decoration: none; font-weight: 700; font-size: 1rem; transition: color 0.3s;}
+        .contact-card a:hover {color: var(--gold);}
+        
+        /* Features Section */
+        .features-section {background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%); padding: 5rem 2.5rem;}
+        .section-header {text-align: center; margin-bottom: 4rem;}
+        .section-label {display: inline-block; padding: 0.6rem 1.3rem; background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 100%); color: var(--navy); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; border: 1px solid var(--sky-blue);}
+        h2 {font-size: 3rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1rem; letter-spacing: -0.025em;}
+        h2 .gold-highlight {color: var(--gold);}
+        .features-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1320px; margin: 0 auto;}
+        .feature-item {background: var(--white); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; position: relative; overflow: hidden;}
+        .feature-item::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;}
+        .feature-item:hover::before {transform: scaleX(1);}
+        .feature-item:hover {border-color: var(--sky-blue); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(14, 165, 233, 0.15);}
+        .feature-icon {width: 80px; height: 80px; background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);}
+        .feature-item h3 {font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--navy-dark);}
+        .feature-item p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7;}
+        
+        /* FAQ Section */
+        .faq-section {padding: 6rem 2.5rem; background: var(--white);}
+        .faq-container {max-width: 1100px; margin: 0 auto;}
+        .faq-item {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); border-radius: 16px; margin-bottom: 1.5rem; border: 2px solid var(--border); border-left: 5px solid var(--gold); transition: all 0.3s; overflow: hidden;}
+        .faq-item:hover {box-shadow: 0 8px 30px rgba(0,0,0,0.08);}
+        .faq-question {padding: 2rem 2.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;}
+        .faq-question h3 {font-size: 1.3rem; font-weight: 700; color: var(--navy-dark); margin: 0; flex: 1;}
+        .faq-toggle {width: 36px; height: 36px; background: var(--sky-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 800; font-size: 1.3rem; transition: all 0.3s; flex-shrink: 0;}
+        .faq-item:hover .faq-toggle {background: var(--gold); color: var(--white);}
+        .faq-item.active .faq-toggle {transform: rotate(45deg); background: var(--sky-blue); color: var(--white);}
+        .faq-answer {max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;}
+        .faq-answer-content {padding: 0 2.5rem 2rem 2.5rem;}
+        .faq-answer p {color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;}
+        .faq-item.active .faq-answer {max-height: 500px; transition: max-height 0.5s ease-in;}
+
+        /* Footer */
+        footer {background: var(--navy-dark); color: rgba(255, 255, 255, 0.8); padding: 4rem 0 2rem;}
+        .footer-content {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 4rem; margin-bottom: 3rem;}
+        .footer-logo {display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem;}
+        .footer-logo img {height: 40px; width: auto;}
+        .footer-logo span {font-size: 1.3rem; font-weight: 700; color: var(--white);}
+        .footer-tagline {font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); font-weight: 500; margin-top: 0.5rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;}
+        .footer-description {line-height: 1.7; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);}
+        .footer-section h4 {color: var(--white); font-weight: 700; margin-bottom: 1.5rem; font-size: 1.1rem;}
+        .footer-links {list-style: none;}
+        .footer-links li {margin-bottom: 0.8rem;}
+        .footer-links a {color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s; font-size: 0.95rem;}
+        .footer-links a:hover {color: var(--sky-blue);}
+        .footer-bottom {max-width: 1320px; margin: 0 auto; padding: 2rem 2.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);}
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-grid {grid-template-columns: 1fr;}
+            .features-grid {grid-template-columns: repeat(2, 1fr);}
+            .footer-content {grid-template-columns: repeat(2, 1fr);}
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {font-size: 2.5rem;}
+            .features-grid {grid-template-columns: 1fr;}
+            nav ul {flex-direction: column; gap: 1rem;}
+            .footer-content {grid-template-columns: 1fr;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="25_11_13__LC_logo-Transp.png" alt="Launch Copilot">
+            </a>
+            <ul>
+                <li><a href="index.html">Why Launch Copilot</a></li>
+                <li><a href="2-how-it-works.html">How It Works</a></li>
+                <li><a href="3-request-demo.html" class="active">Request Demo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Schedule Your Demo</div>
+            <h1>See Launch Copilot <span class="highlight">Transform</span> Your Launch</h1>
+            <p class="hero-subtitle">Experience how we bring predictability and strategic intelligence to pharmaceutical launch execution—tailored to your therapeutic area and organizational context</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="content-grid">
+            <div class="form-section">
+                <h2>Schedule Your Demo</h2>
+                <div id="hubspot-form-container">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        portalId: "7247302",
+                        formId: "04bd596b-b068-464c-aeb4-76a22855ef88",
+                        region: "na1"
+                      });
+                    </script>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>What to Expect</h2>
+                <p>Your personalized demo will show how Launch Copilot addresses your specific launch challenges, integrates with your existing systems, and accelerates your path to launch success.</p>
+                
+                <ul class="benefits-list">
+                    <li>30-45 minute interactive session tailored to your therapeutic area and launch priorities</li>
+                    <li>Live demonstration of all four modes using scenarios relevant to your organization</li>
+                    <li>Discussion of integration options with your current technology stack and workflows</li>
+                    <li>Q&A with pharmaceutical launch experts who understand your challenges</li>
+                </ul>
+
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>Have questions before scheduling?</p>
+                            <a href="mailto:hello@launchcopilot.ai">hello@launchcopilot.ai</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">📅</div>
+                        <div>
+                            <h3>Enterprise Solutions</h3>
+                            <p>Need a custom enterprise implementation plan?</p>
+                            <a href="mailto:enterprise@launchcopilot.ai">enterprise@launchcopilot.ai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="features" class="features-section">
+        <div class="section-header">
+            <span class="section-label">Platform Features</span>
+            <h2>Everything You Need for <span class="gold-highlight">Launch Excellence</span></h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">💡</div>
+                <h3>Guide Mode</h3>
+                <p>Strategic coaching and decision frameworks for complex launch challenges</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✍️</div>
+                <h3>Builder Mode</h3>
+                <p>AI-powered creation of medical, commercial, and market access deliverables</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⚙️</div>
+                <h3>Orchestrator Mode</h3>
+                <p>Enterprise governance with portfolio visibility and readiness dashboards</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✅</div>
+                <h3>Reviewer Mode</h3>
+                <p>Systematic quality assurance and compliance checking for all materials</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="faq" class="faq-section">
+        <div class="faq-container">
+            <div class="section-header">
+                <span class="section-label">Frequently Asked Questions</span>
+                <h2>Common Questions <span class="gold-highlight">Answered</span></h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How does Launch Copilot differ from traditional project management tools?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Unlike generic project management platforms, Launch Copilot embeds pharmaceutical launch expertise directly into the platform. It understands the unique complexities of medical affairs, market access, regulatory pathways, and commercial execution. Rather than just tracking tasks, it provides strategic guidance, identifies risks specific to pharma launches, generates therapeutic area-appropriate deliverables, and orchestrates cross-functional dependencies that are invisible to traditional PM tools.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What ROI can we expect from implementing Launch Copilot?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Organizations typically see 40-50% faster deliverable development, 3-4 week earlier risk detection, and significant reduction in launch delays that cost millions per month. More importantly, teams reclaim strategic thinking time from coordination overhead, executives gain portfolio-wide visibility for better resource allocation, and institutional knowledge compounds across launches rather than being lost between products. The platform typically pays for itself within the first launch through prevented delays and improved execution quality.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How quickly can we start seeing value?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Most teams begin using Launch Copilot within 2-4 weeks, with immediate impact on deliverable creation speed and strategic decision quality. Full value realization—including cross-functional orchestration, institutional learning, and risk detection—typically takes 1-2 months as the platform learns your organization's specific context, processes, and strategic priorities. The learning curve is minimal since the platform is designed around how pharmaceutical launch teams actually work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What level of customization is possible for our organization?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Launch Copilot is highly configurable to match your launch methodology, governance structure, templates, approval workflows, and terminology. We align the platform with your specific processes—from brand strategy frameworks to medical-legal review protocols to cross-functional decision forums. Your Launch Excellence standards become the platform's quality benchmarks. The system learns from your launches to provide increasingly relevant, organization-specific guidance over time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How does Launch Copilot handle data security and compliance?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We maintain SOC 2 Type II certified infrastructure with enterprise-grade security controls. This includes role-based access by function and data sensitivity, complete audit trails for all actions, version history with rollback capabilities, and export controls for confidential information. Our AI governance framework ensures human oversight for critical decisions, transparency into AI reasoning and data sources, and compliance with pharmaceutical industry standards for AI usage in regulated content development.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Can Launch Copilot integrate with our existing systems?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes. Launch Copilot integrates with common pharmaceutical technology platforms including SharePoint, Google Drive, Veeva CRM, Salesforce, Microsoft 365, and major data warehouse systems. Our roadmap includes deeper integrations with Veeva PromoMats, Jira, Zinc, and regulatory submission platforms. During implementation, we map your specific integration requirements and technical architecture to ensure seamless workflow and data connectivity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What therapeutic areas does Launch Copilot support?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Launch Copilot supports pharmaceutical launches across all major therapeutic areas including oncology, rare diseases, immunology, neurology, cardiovascular, respiratory, and metabolic disorders. The platform adapts its frameworks, success criteria, and guidance based on therapeutic area characteristics, regulatory pathways, payer dynamics, and competitive landscapes. We continuously expand our therapeutic area intelligence based on real-world launch outcomes and evolving market conditions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How does pricing work for Launch Copilot?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Pricing is based on the number of active launches, team size, and feature set required for your organization. We offer flexible licensing models including per-launch pricing and enterprise subscriptions for organizations with multiple concurrent launches. Most mid-sized biopharma organizations find the platform pays for itself through prevented launch delays and accelerated execution. Contact us for a customized quote based on your specific needs and launch portfolio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What kind of training and support do you provide?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We provide comprehensive onboarding including role-specific training for launch leads, functional teams, and executives; detailed documentation and video tutorials; regular office hours with pharmaceutical launch experts; and dedicated customer success resources. Teams also gain access to our knowledge base of launch best practices, case studies from comparable products, and a community of launch professionals. Our goal is to make you self-sufficient quickly while providing expert support whenever needed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Can we start with a pilot launch before enterprise-wide adoption?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Absolutely. Many organizations begin with a pilot on a single launch to demonstrate value before expanding to their full portfolio. This approach allows your team to learn the platform, validate the ROI, and build internal champions. Pilot launches typically run for 3-6 months and include full platform access, dedicated implementation support, and regular check-ins to ensure success. Successful pilots often lead to rapid enterprise adoption as teams experience the tangible benefits firsthand.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">
+                    <img src="25_11_13__LC_logo-footer.jpg" alt="Launch Copilot">
+                </div>
+                <div class="footer-tagline">A Clariem Product</div>
+                <p class="footer-description">AI-powered pharmaceutical launch excellence platform transforming how biopharma organizations orchestrate complex product launches.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Why Launch Copilot</a></li>
+                    <li><a href="2-how-it-works.html">How It Works</a></li>
+                    <li><a href="3-request-demo.html">Request Demo</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Clariem</a></li>
+                    <li><a href="3-request-demo.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Clariem Inc. All rights reserved.</div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked FAQ if it wasn't already open
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
