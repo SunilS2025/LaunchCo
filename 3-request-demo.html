@@ -182,7 +182,7 @@
                         <div>
                             <h3>Email Us</h3>
                             <p>Have questions before scheduling?</p>
-                            <a href="mailto:info@clariem.com">info@clariem.com</a>
+                            <a href="/cdn-cgi/l/email-protection#3c55525a537c5f505d4e555951125f5351"><span class="__cf_email__" data-cfemail="0861666e67486b64697a616d65266b6765">[email&#160;protected]</span></a>
                         </div>
                     </div>
 
@@ -336,9 +336,7 @@
                     <h3>What kind of training and support do you provide?</h3>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        <p>We provide comprehensive onboarding including role-specific training for launch leads, functional teams, and executives; detailed documentation and video tutorials; regular office hours with pharmaceutical launch experts; and dedicated customer success resources. Teams also gain access to our knowledge base of launch best practices, case studies from comparable products, and a community of launch professionals. Our goal is to make you self-sufficient quickly while providing expert support whenever needed.</p>
+                <div class="g including role-specific training for launch leads, functional teams, and executives; detailed documentation and video tutorials; regular office hours with pharmaceutical launch experts; and dedicated customer success resources. Teams also gain access to our knowledge base of launch best practices, case studies from comparable products, and a community of launch professionals. Our goal is to make you self-sufficient quickly while providing expert support whenever needed.</p>
                     </div>
                 </div>
             </div>
@@ -392,4 +390,51 @@
         <div class="footer-bottom">© 2025 Clariem Inc. All rights reserved.</div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('mobile-menu-open');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('nav')) {
+                        navMenu.classList.remove('mobile-menu-open');
+                    }
+                });
+                
+                // Close menu when clicking a link
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
+        });
+    </script>
+
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
