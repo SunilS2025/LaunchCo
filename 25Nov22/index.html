@@ -45,8 +45,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%) 1;
+            border-bottom: 2px solid var(--sky-pale);
         }
 
         nav {
@@ -70,7 +69,7 @@
         }
 
         .logo img {
-            height: 55px;
+            height: 45px;
             width: auto;
         }
 
@@ -96,7 +95,7 @@
 
         nav a.active {
             color: var(--navy);
-            font-weight: 700;
+            font-weight: 600;
         }
 
         nav a.active::after {
@@ -107,16 +106,6 @@
             right: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);
-        }
-
-        /* Mobile menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--navy);
         }
 
         /* Hero Section */
@@ -866,27 +855,14 @@
         }
 
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 280px;
-                height: calc(100vh - 80px);
-                background: var(--white);
+            nav {
                 flex-direction: column;
-                padding: 2rem;
-                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-                transition: right 0.3s ease;
-                gap: 1.5rem;
-                align-items: flex-start;
+                gap: 1rem;
             }
 
-            nav ul.mobile-menu-open {
-                right: 0;
+            nav > ul {
+                flex-direction: column;
+                gap: 1rem;
             }
 
             .hero h1 {
@@ -919,9 +895,8 @@
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <img src="25_11_13__LC_logo-Transp.png" alt="Launch Copilot">
+                <img src="25_11_13__LC_logo-Transp-old.png" alt="Launch Copilot">
             </a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
             <ul>
                 <li><a href="index.html" class="active">Why Launch Copilot</a></li>
                 <li><a href="2-how-it-works.html">How It Works</a></li>
@@ -1247,10 +1222,10 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Clariem Suite</h4>
+                <h4>Company</h4>
                 <ul class="footer-links">
-                    <li><a href="http://www.transformcopilot.ai">Transform Copilot</a></li>
                     <li><a href="http://www.clariem.com">About Clariem</a></li>
+                    <li><a href="3-request-demo.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1265,34 +1240,6 @@
             © 2025 Clariem Inc. All rights reserved.
         </div>
     </footer>
-
-    <script>
-        // Mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navMenu = document.querySelector('nav ul');
-            
-            if (mobileMenuBtn && navMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navMenu.classList.toggle('mobile-menu-open');
-                });
-                
-                // Close menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!event.target.closest('nav')) {
-                        navMenu.classList.remove('mobile-menu-open');
-                    }
-                });
-                
-                // Close menu when clicking a link
-                navMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        navMenu.classList.remove('mobile-menu-open');
-                    });
-                });
-            }
-        });
-    </script>
 
     <script>
         function showTab(index) {
